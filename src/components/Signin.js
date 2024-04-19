@@ -48,7 +48,7 @@ const Signin = () => {
                     console.error('Unexpected user type received from server');
                 }
             }
-            if (response) {
+            if (data) {
                 if (data.status) {
                     window.location.href = '/dashboard';
                 }
