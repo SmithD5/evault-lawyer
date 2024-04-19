@@ -58,7 +58,7 @@ const Queries = () => {
                             </div>
                             <div className="date-div-case-details" style={{ "marginLeft": "5vw" }}>
                                 <p className="labels" id="date-of-action-case-details__p">File ID</p>
-                                <input type="text" name="dateOfAction" id="date-of-action-case-details" onChange={dataChange} />
+                                <input type="text" name="fileID" id="date-of-action-case-details" placeholder='Type here' style={{ "marginLeft": "3vw" }} onChange={dataChange} />
                             </div>
                         </div>
                     </div>

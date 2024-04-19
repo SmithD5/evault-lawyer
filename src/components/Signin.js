@@ -6,6 +6,9 @@ import Cookies from 'js-cookie';
 
 const Signin = () => {
 
+    const status = true;
+    const role = "lawyer";
+
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(''); // For displaying errors
@@ -27,54 +30,41 @@ const Signin = () => {
             //     username: name,
             //     password,
             // });
-            const response = {
+            const data = {
                 username: name,
-                password,
+                status,
+                role
+
             };
-            const lawyerResponse = {
-                username: "lawyer",
-                password: "lawyer",
-            }
 
-            const judgeResponse = {
-                username: "judge",
-                password: 'judge',
-            }
-            const clerkResponse = {
-                username: "clerk",
-                password: "clerk",
-            }
 
-            // if (response.data.success) {
-            //     // Successful authentication, redirect based on user type
-            //     if (response.data.userType === 'user') {
-            //         window.location.href = '/user-page';
-            //     } else if (response.data.userType === 'clerk') {
-            //         window.location.href = '/clerk-page';
-            //     } else {
-            //         console.error('Unexpected user type received from server');
-            //     }
-            // }
-            // if (response) {
-            if (response.username === lawyerResponse.username && response.password === lawyerResponse.password) {
-                window.location.href = '/dashboard';
-            } else if (response.username === clerkResponse.username && response.password === clerkResponse.password) {
-                window.location.href = '/dashboard/court-official';
-            } else if (response.username === judgeResponse.username && response.password === judgeResponse.password) {
-                window.location.href = '/dashboard-judge';
+            if (response.data.success) {
+                // Successful authentication, redirect based on user type
+                if (response.data.userType === 'user') {
+                    window.location.href = '/user-page';
+                } else if (response.data.userType === 'clerk') {
+                    window.location.href = '/clerk-page';
+                } else {
+                    console.error('Unexpected user type received from server');
+                }
             }
-            // else {
-            //     console.error('Unexpected user type received from server');
-            // }
-            // }
-            // else {
-            //     setErrorMessage(response.data.message || 'Login failed'); // Handle server-side error message
-            // }
+            if (response) {
+                if (data.status) {
+                    window.location.href = '/dashboard';
+                }
+                else {
+                    console.error('Unexpected user type received from server');
+                }
+            }
+            else {
+                setErrorMessage(response.data.message || 'Login failed'); // Handle server-side error message
+            }
         } catch (error) {
             console.error('Error during login:', error);
             setErrorMessage('An error occurred. Please try again later.'); // Generic error message for user
         }
         Cookies.set("username", name, { expires: 2 })
+        Cookies.set("role", role, { expires: 2 })
     };
 
     return (
