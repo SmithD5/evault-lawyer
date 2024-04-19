@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 
 
 
-const Dashboard = () => {
+const CaseFile = () => {
 
     if (Cookies.get("username") == null) {
         window.location.href = "/"
@@ -89,7 +89,7 @@ const Dashboard = () => {
 
 
             <div className="third_part">
-                <p>Cases Listed</p>
+                <p>Case Files Listed</p>
                 <div className="cases">
                     {data ? (
                         <table className="data-table">
@@ -105,32 +105,6 @@ const Dashboard = () => {
 
                             </thead>
                             <tbody>
-                                {/* {data.map((row) => (
-                                    <tr key={row.id}>
-
-                                        {Object.values(row).map((value) => (
-                                            <td key={value}>{value}</td>
-                                        ))}
-                                    </tr>
-                                ))} */}
-
-                                {/* {filteredData.map((row) => (
-                                    <>
-                                        <tr key={row.id}>
-
-                                            {Object.values(row).map((value) => (
-                                                <td key={value}>{value}</td>
-                                            ))}
-                                        </tr>
-                                        <tr>
-                                            <div className="file-view" style={"backgroundColor"}>
-
-                                            </div>
-                                        </tr>
-                                    </>
-                                ))} */}
-
-
 
                                 {filteredData.map((row) => (
                                     <React.Fragment key={row.id}>
@@ -138,14 +112,12 @@ const Dashboard = () => {
                                             {Object.values(row).map((value) => (
                                                 <td key={value}>{value}</td>
                                             ))}
-                                            <td
-                                            // colSpan={Object.keys(row).length}
-                                            >
+                                            <td>
                                                 <div
                                                     className="file-view"
                                                     style={{ backgroundColor: "lightblue", cursor: "pointer" }}
                                                     onClick={() => {
-                                                        window.location.href = `/case-file/${row.caseID}`;
+                                                        window.location.href = `https://www.google.com`;
                                                     }}
                                                 >
                                                     View
@@ -162,7 +134,7 @@ const Dashboard = () => {
                     ) : (
                         <>
                             <img src="no-case.png" alt="" />
-                            <p>No cases</p>
+                            <p>No case files</p>
                         </>
                     )}
                 </div>
@@ -175,4 +147,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default CaseFile

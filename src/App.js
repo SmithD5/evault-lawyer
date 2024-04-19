@@ -7,6 +7,7 @@ import Register from "./components/Register.js";
 import Dashboard from "./components/Dashboard.js";
 import CaseFiling from "./components/CaseFiling.js";
 import Queries from "./components/Queries.js";
+import CaseFile from './components/CaseFile.js';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route index path='/dashboard' element={<Dashboard />} />
         <Route index path='/case-filing/case-details' element={<CaseFiling />} />
         <Route index path='/queries' element={<Queries />} />
+        <Route path="/case-file/:id" element={<CaseFile />} />
       </Routes>
     </Router>
   );

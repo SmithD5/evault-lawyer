@@ -38,7 +38,7 @@ const Nav = () => {
                 <ul className='profile_section'>
                     <div className="profile">
                         <div className="profile-content">
-                            <p>Lawyer</p>
+                            <p>{Cookies.get("username")}</p>
                             <img src="/down.png" alt="" />
                         </div>
                         <div className="logout-section">
