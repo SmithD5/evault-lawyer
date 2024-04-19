@@ -49,7 +49,7 @@ const Signin = () => {
                 }
             }
             if (data) {
-                if (data.status) {
+                if (data.status == true) {
                     window.location.href = '/dashboard';
                 }
                 else {
