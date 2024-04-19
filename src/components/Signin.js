@@ -51,6 +51,8 @@ const Signin = () => {
             if (data) {
                 if (data.status == true) {
                     window.location.href = '/dashboard';
+                    Cookies.set("username", name, { expires: 2 })
+                    Cookies.set("role", role, { expires: 2 })
                 }
                 else {
                     console.error('Unexpected user type received from server');
@@ -63,8 +65,7 @@ const Signin = () => {
             console.error('Error during login:', error);
             setErrorMessage('An error occurred. Please try again later.'); // Generic error message for user
         }
-        Cookies.set("username", name, { expires: 2 })
-        Cookies.set("role", role, { expires: 2 })
+
     };
 
     return (
